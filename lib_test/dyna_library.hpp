@@ -1,0 +1,2 @@
+
+int hoge_func();

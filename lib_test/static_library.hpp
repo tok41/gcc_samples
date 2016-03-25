@@ -1,0 +1,3 @@
+
+int static_func();
+

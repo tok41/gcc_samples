@@ -1,0 +1,39 @@
+
+;; Function int hoge_func() (_Z9hoge_funcv, funcdef_no=0, decl_uid=2714, cgraph_uid=0)
+
+(note 1 0 3 NOTE_INSN_DELETED)
+(note 3 1 20 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn/f 20 3 21 2 (set (mem:DI (pre_dec:DI (reg/f:DI 7 sp)) [0  S8 A8])
+        (reg/f:DI 6 bp)) dyna_library.cpp:3 67 {*pushdi2_rex64}
+     (nil))
+(insn/f 21 20 22 2 (set (reg/f:DI 6 bp)
+        (reg/f:DI 7 sp)) dyna_library.cpp:3 87 {*movdi_internal_rex64}
+     (nil))
+(note 22 21 2 2 NOTE_INSN_PROLOGUE_END)
+(note 2 22 5 2 NOTE_INSN_FUNCTION_BEG)
+(insn 5 2 6 2 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC0") [flags 0x2]  <var_decl 0x7fce830d4980 *.LC0>)) dyna_library.cpp:4 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 6 5 7 2 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("puts") [flags 0x41]  <function_decl 0x7fce82fee700 __builtin_puts>) [0 __builtin_puts S1 A8])
+            (const_int 0 [0]))) dyna_library.cpp:4 663 {*call_value}
+     (expr_list:REG_DEAD (reg:DI 5 di)
+        (expr_list:REG_UNUSED (reg:SI 0 ax)
+            (nil)))
+    (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+        (nil)))
+(insn 7 6 17 2 (set (reg:SI 0 ax [orig:59 D.2720 ] [59])
+        (const_int 0 [0])) dyna_library.cpp:5 89 {*movsi_internal}
+     (nil))
+(insn 17 7 23 2 (use (reg/i:SI 0 ax)) dyna_library.cpp:6 -1
+     (nil))
+(note 23 17 24 2 NOTE_INSN_EPILOGUE_BEG)
+(insn/f 24 23 25 2 (set (reg/f:DI 6 bp)
+        (mem:DI (post_inc:DI (reg/f:DI 7 sp)) [0  S8 A8])) dyna_library.cpp:6 77 {*popdi1}
+     (expr_list:REG_CFA_DEF_CFA (plus:DI (reg/f:DI 7 sp)
+            (const_int 8 [0x8]))
+        (nil)))
+(jump_insn 25 24 26 2 (simple_return) dyna_library.cpp:6 672 {simple_return_internal}
+     (nil)
+ -> simple_return)
+(barrier 26 25 0)

@@ -1,0 +1,14 @@
+
+server_sample/
+out/
+build/
+bin/
+*.o
+*.out
+core
+archives/
+
+# Other
+*.log
+*.swp
+*.bak
