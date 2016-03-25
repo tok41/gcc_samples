@@ -8,6 +8,9 @@ bin/
 core
 archives/
 
+GAN_tensorflow/
+chainer-DCGAN/
+
 # Other
 *.log
 *.swp
