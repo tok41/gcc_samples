@@ -3,9 +3,9 @@ CXX = g++
 TARGET1 = cond_var_sample_3
 ## For Linux
 #CPPFLAGS = -Wall -pthread -std=c++11 -g
-#CPPFLAGS = -pthread -std=c++11 -g
+CPPFLAGS = -pthread -std=c++11 -g
 ## For Mac
-CPPFLAGS = -Wall -std=c++11 -stdlib=libc++ -g
+#CPPFLAGS = -Wall -std=c++11 -stdlib=libc++ -g
 
 $(TARGET1): $(TARGET1).cpp
 	$(CXX) $^ -o $@ $(CPPFLAGS)
