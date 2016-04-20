@@ -7,20 +7,21 @@
 int main()
 {
 	// ファイルを読む
-	std::string filepath = "./weight.json";
+	std::string filepath = "./weight_t.json";
 	std::ifstream ifs(filepath);
 	picojson::value v;
 	std::string err = picojson::parse(v, ifs);
-	// *** エラー処理を書く
+	if (! err.empty()) {
+		std::cout << "JSONファイルのパースに失敗しました。" << std::endl;
+	}
 	
 	std::map<std::string, picojson::value> &data = v.get<picojson::object>();
 	std::cout << data["layers"] << ", size="<< sizeof(data["layers"]) << std::endl;
-	//std::cout << data.size() << std::endl;
 
 	// *** layers ***
 	std::cout << "*** layers ***" << std::endl;
 	for (auto& x:data) {
-		if(x.first != "layers") {
+		if(x.first != "layers" && x.first != "threshold") {
 			std::cout << "type["<< x.first << "] : " ;
 			std::map<std::string, picojson::value> &t = data[x.first].get<picojson::object>();
 			std::cout << t["type"] << std::endl;
@@ -29,7 +30,7 @@ int main()
 
 	std::cout << "*** keys ***" << std::endl;
 	for (auto& x:data) {
-		if(x.first != "layers") {
+		if(x.first != "layers" && x.first != "threshold") {
 			std::cout << x.first << " : " ;
 			std::map<std::string, picojson::value> &t = data[x.first].get<picojson::object>();
 			for (auto& x2:t) {
@@ -39,29 +40,29 @@ int main()
 		}
 	}
 
-	std::map<std::string, picojson::value> &t3 = data["ip1"].get<picojson::object>();
-	std::cout << "*** ip1 ***" << std::endl;
-	picojson::array tmp = t3["weight"].get<picojson::array>();
-	std::cout << "weight, size=" << tmp.size() << std::endl;
-	tmp = t3["bias"].get<picojson::array>();
-	std::cout << "bias, size=" << tmp.size() << std::endl;
-	picojson::array ip1_w = t3["weight"].get<picojson::array>();
-	std::cout <<"size weight : " << ip1_w.size()<< std::endl;
-	picojson::array ip1_w_0 = ip1_w[0].get<picojson::array>();
-	std::cout <<"size weight[0] : " << ip1_w_0.size()<< std::endl;
-	picojson::array ip1_w_1 = ip1_w[1].get<picojson::array>();
-	std::cout <<"size weight[1] : " << ip1_w_1.size()<< std::endl;
-
-	std::map<std::string, picojson::value> &t4 = data["ipf"].get<picojson::object>();
-	std::cout << "*** ipf ***" << std::endl;
-	tmp = t4["weight"].get<picojson::array>();
-	std::cout << "weight, size=" << tmp.size() << std::endl;
-	tmp = t4["bias"].get<picojson::array>();
-	std::cout << "bias, size=" << tmp.size() <<", val="<<t4["bias"] << std::endl;
-	picojson::array ipf_w = t4["weight"].get<picojson::array>();
-	std::cout <<"size weight : " << ipf_w.size()<< std::endl;
-	picojson::array ipf_w_0 = ipf_w[0].get<picojson::array>();
-	std::cout <<"size weight[0] : " << ipf_w_0.size()<< std::endl;
+	//std::map<std::string, picojson::value> &t3 = data["ip1"].get<picojson::object>();
+	//std::cout << "*** ip1 ***" << std::endl;
+	//picojson::array tmp = t3["weight"].get<picojson::array>();
+	//std::cout << "weight, size=" << tmp.size() << std::endl;
+	//tmp = t3["bias"].get<picojson::array>();
+	//std::cout << "bias, size=" << tmp.size() << std::endl;
+	//picojson::array ip1_w = t3["weight"].get<picojson::array>();
+	//std::cout <<"size weight : " << ip1_w.size()<< std::endl;
+	//picojson::array ip1_w_0 = ip1_w[0].get<picojson::array>();
+	//std::cout <<"size weight[0] : " << ip1_w_0.size()<< std::endl;
+	//picojson::array ip1_w_1 = ip1_w[1].get<picojson::array>();
+	//std::cout <<"size weight[1] : " << ip1_w_1.size()<< std::endl;
+	//
+	//std::map<std::string, picojson::value> &t4 = data["ipf"].get<picojson::object>();
+	//std::cout << "*** ipf ***" << std::endl;
+	//tmp = t4["weight"].get<picojson::array>();
+	//std::cout << "weight, size=" << tmp.size() << std::endl;
+	//tmp = t4["bias"].get<picojson::array>();
+	//std::cout << "bias, size=" << tmp.size() <<", val="<<t4["bias"] << std::endl;
+	//picojson::array ipf_w = t4["weight"].get<picojson::array>();
+	//std::cout <<"size weight : " << ipf_w.size()<< std::endl;
+	//picojson::array ipf_w_0 = ipf_w[0].get<picojson::array>();
+	//std::cout <<"size weight[0] : " << ipf_w_0.size()<< std::endl;
 	
 	//std::map<std::string, picojson::value> &t = data["conv1"].get<picojson::object>();
 	//std::cout << "*** conv1.values ***" << std::endl;
