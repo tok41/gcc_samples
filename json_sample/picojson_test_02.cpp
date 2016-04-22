@@ -16,6 +16,7 @@ int main()
 	}
 	
 	std::map<std::string, picojson::value> &data = v.get<picojson::object>();
+	std::cout << "threshold : " << data["threshold"] <<std::endl;
 	std::cout << data["layers"] << ", size="<< sizeof(data["layers"]) << std::endl;
 
 	// *** layers ***

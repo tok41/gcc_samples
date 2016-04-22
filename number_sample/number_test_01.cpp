@@ -11,7 +11,7 @@
 
 int main()
 {
-	float x = 2.8;
+	float x = 0.5;
 	unsigned char b[4];
 	memcpy(b, &x, 4);
 
